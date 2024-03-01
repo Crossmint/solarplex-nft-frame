@@ -1,12 +1,9 @@
-import {
-  getFrameMetadata,
-  FrameMetadataType,
-} from "@usedispatch/solarplex-frame-sdk";
+import { getFrameMetadata } from "@usedispatch/solarplex-frame-sdk";
 import type { Metadata } from "next";
 
 const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
 
-const frameMetadata: FrameMetadataType = {
+const frameMetadata = getFrameMetadata({
   buttons: [
     {
       label: "Mint a cNFT from Solarplex",
@@ -19,8 +16,7 @@ const frameMetadata: FrameMetadataType = {
     text: "Enter your wallet or .sol or email address",
   },
   post_url: `${NEXT_PUBLIC_URL}/api/frame`,
-};
-const framemetadata = getFrameMetadata(frameMetadata);
+});
 
 export const metadata: Metadata = {
   title: "Mint a cNFT from Solarplex",
@@ -31,7 +27,7 @@ export const metadata: Metadata = {
     images: [`${NEXT_PUBLIC_URL}/default.png`],
   },
   other: {
-    ...framemetadata,
+    ...frameMetadata,
   },
 };
 
