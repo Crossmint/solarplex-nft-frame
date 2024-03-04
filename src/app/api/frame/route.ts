@@ -6,6 +6,7 @@ import {
 import { NextRequest, NextResponse } from "next/server";
 import { getDomainKeySync, NameRegistryState } from "@bonfida/spl-name-service";
 import { Connection, PublicKey } from "@solana/web3.js";
+import { link } from "fs";
 
 export async function POST(req: NextRequest): Promise<Response> {
   let input: string | undefined = "";
@@ -17,6 +18,8 @@ export async function POST(req: NextRequest): Promise<Response> {
 
   try {
     const { message } = await getFrameMessage(body);
+    const { untrustedData } = body;
+    const linkedWallet = untrustedData.linkedWallet;
 
     if (message?.input) {
       input = message.input;
@@ -41,7 +44,7 @@ export async function POST(req: NextRequest): Promise<Response> {
       isEmail = true;
       recipientAddress = `email:${input}:solana`;
     } else {
-      recipientAddress = `solana:${input}`;
+      recipientAddress = `solana:${linkedWallet}`;
     }
 
     const crossmintURL = `https://${env}.crossmint.com/api/2022-06-09/collections/${process.env.CROSSMINT_COLLECTION_ID}/nfts`;

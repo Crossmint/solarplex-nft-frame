@@ -1,4 +1,7 @@
-import { getFrameMetadata } from "@usedispatch/solarplex-frame-sdk";
+import {
+  getFrameMetadata,
+  callPostFrameAction,
+} from "@usedispatch/solarplex-frame-sdk";
 import type { Metadata } from "next";
 
 const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
