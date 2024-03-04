@@ -4,12 +4,8 @@ import {
   getFrameHtmlResponse,
 } from "@usedispatch/solarplex-frame-sdk";
 import { NextRequest, NextResponse } from "next/server";
-import { getDomainKeySync, NameRegistryState } from "@bonfida/spl-name-service";
-import { Connection, PublicKey } from "@solana/web3.js";
-import { link } from "fs";
 
 export async function POST(req: NextRequest): Promise<Response> {
-  let input: string | undefined = "";
   let recipientAddress = "";
   const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
   let isEmail = false;
@@ -21,14 +17,10 @@ export async function POST(req: NextRequest): Promise<Response> {
     const { untrustedData } = body;
     const linkedWallet = untrustedData.linkedWallet;
 
-    if (message?.input) {
-      input = message.input;
-    }
-
     if (!linkedWallet) {
       return new NextResponse(
         getFrameHtmlResponse({
-          image: `${NEXT_PUBLIC_URL}/error.png`,
+          image: `${NEXT_PUBLIC_URL}/error2.png`,
         })
       );
     }
@@ -67,7 +59,7 @@ export async function POST(req: NextRequest): Promise<Response> {
                 label: "View your NFT on crossmint.com",
               }
             : {
-                label: "Your NFT will be delivered to your wallet soon!",
+                label: `${linkedWallet}`,
               },
         ],
       })
