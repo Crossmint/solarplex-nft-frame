@@ -26,8 +26,7 @@ export async function POST(req: NextRequest): Promise<Response> {
           image: `${NEXT_PUBLIC_URL}/error1.png`,
           buttons: [
             {
-              label: "Try again!",
-              action: "post",
+              label: "Refresh and try again!",
             },
           ],
         })
