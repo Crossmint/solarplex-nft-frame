@@ -33,12 +33,12 @@ export async function POST(req: NextRequest): Promise<Response> {
       headers: {
         accept: "application/json",
         "content-type": "application/json",
-        "x-api-key": process.env.CROSSMINT_API_KEY!,
+        "X-API-KEY": process.env.CROSSMINT_API_KEY!,
       },
       body: JSON.stringify({
         recipient: recipientAddress,
         metadata: {
-          name: "The First Solarplex Frame to Mint NFTs",
+          name: "First Solarplex Mint NFT Frame",
           image: `${NEXT_PUBLIC_URL}/nft.png`,
           description:
             "This is the first NFT that was minted from Solarplex. Powered by Crossmint",
@@ -54,13 +54,9 @@ export async function POST(req: NextRequest): Promise<Response> {
       getFrameHtmlResponse({
         image: `${NEXT_PUBLIC_URL}/success.png`,
         buttons: [
-          isEmail
-            ? {
-                label: "View your NFT on crossmint.com",
-              }
-            : {
-                label: `${linkedWallet}`,
-              },
+          {
+            label: `Your NFT will be delivered to your wallet soon!`,
+          },
         ],
       })
     );
