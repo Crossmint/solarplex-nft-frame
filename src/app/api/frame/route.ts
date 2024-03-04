@@ -23,10 +23,11 @@ export async function POST(req: NextRequest): Promise<Response> {
     ) {
       return new NextResponse(
         getFrameHtmlResponse({
-          image: `${NEXT_PUBLIC_URL}/like.png`,
+          image: `${NEXT_PUBLIC_URL}/error1.png`,
           buttons: [
             {
-              label: "You need to like and repost to mint!",
+              label: "Try again!",
+              action: "post",
             },
           ],
         })
