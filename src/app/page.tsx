@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1>Mint a cNFT from Solarplexs</h1>
+      <h1>Mint a cNFT from Solarplex</h1>
     </>
   );
 }
