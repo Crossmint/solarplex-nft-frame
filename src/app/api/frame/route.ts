@@ -8,7 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest): Promise<Response> {
   let recipientAddress = "";
   const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
-  let isEmail = false;
+  let isEmail = false; //for email minting, disable at the moment. You can use this when Solarplex supports text inputs
   const body: FrameRequest = await req.json();
   const env = process.env.CROSSMINT_ENV || "staging";
 
@@ -16,6 +16,22 @@ export async function POST(req: NextRequest): Promise<Response> {
     const { message } = await getFrameMessage(body);
     const { untrustedData } = body;
     const linkedWallet = untrustedData.linkedWallet;
+
+    if (
+      untrustedData.likedPost === false ||
+      untrustedData.repostedPost === false
+    ) {
+      return new NextResponse(
+        getFrameHtmlResponse({
+          image: `${NEXT_PUBLIC_URL}/like.png`,
+          buttons: [
+            {
+              label: "You need to like and repost to mint!",
+            },
+          ],
+        })
+      );
+    }
 
     if (!linkedWallet) {
       return new NextResponse(
@@ -38,12 +54,12 @@ export async function POST(req: NextRequest): Promise<Response> {
       body: JSON.stringify({
         recipient: recipientAddress,
         metadata: {
-          name: "First Solarplex Mint NFT Frame",
+          name: "First Solarplex Mint NFT Frame", //should not exceed 32 characters
           image: `${NEXT_PUBLIC_URL}/nft.png`,
           description:
             "This is the first NFT that was minted from Solarplex. Powered by Crossmint",
         },
-        compressed: true,
+        compressed: true, //mint compressed NFTs on Solana
       }),
     };
 
@@ -58,6 +74,7 @@ export async function POST(req: NextRequest): Promise<Response> {
             label: `Your NFT will be delivered to your wallet soon!`,
           },
         ],
+        post_url: `https://solscan.io/token/2hPmQbHKuohRWQqRvU28t13zEdoUZjYnxs8ES6L7NnUc#txs`,
       })
     );
   } catch (error) {

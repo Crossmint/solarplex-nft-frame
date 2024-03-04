@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# The First Solarplex Frame to Mint Compressed NFTs (cNFTs) on Solana
 
-## Getting Started
+This is the First Solarplex Frame that allows your users to mint a cNFT on Solana, directly to their wallet address. All you need to do is like the post and re-post it, and then click on "Mint" to mint the NFT. The NFT will be delivered to your wallet address in a few seconds.
 
-First, run the development server:
+<Note>
+    Ensure that you have linked your Solana wallet address to your Solarplex account! Otherwise, this will not work for you. 
+</Note>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Create and Deploy an NFT Collection on Solana using [Crossmint](http://crossmint.com/?utm_source=rohit&utm_medium=github&utm_campaign=solana-solarplex)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> The collection that I created and deployed is on Production, i.e., Solana Mainnet(Beta). However, it is recommended that you familiarize yourself with this on Staging (Testnet/Devnet) first before migrating to Production (Mainnet). Click to proceed to Crossmint's [Staging Console](https://staging.crossmint.com/console/overview?utm_source=rohit&utm_medium=github&utm_campaign=solana-solarplex). Click to proceed to Crossmint's [Production Console](https://crossmint.com/console/overview?utm_source=rohit&utm_medium=github&utm_campaign=solana-solarplex)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Refer to this step-by-step guide to learn how you can create an NFT Collection on Solana using Crossmint and also mint compressed NFTs (cNFTs) using both no-code and low-code approach. Click [here](https://blog.crossmint.com/compressed-nfts-explained/?utm_source=rohit&utm_medium=github&utm_campaign=solana-solarplex) for the guide.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Create a Next App - Create and Configure the Solarplex Frame
 
-## Learn More
+Refer to the repository's src for the code that lets you create an NFT Minting Solarplex Frame on Solana.
 
-To learn more about Next.js, take a look at the following resources:
+## Configure the ENV variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `NEXT_PUBLIC_URL` - The URL of your deployed Next app
+- `CROSSMINT_ENV` - The Crossmint environment that you are using to deploy the NFT Collection. If it is on Production or Mainnet, use `www`. If it is on Staging or Testnet, use `staging`.
+- `CROSSMINT_API_KEY` - The Crossmint API Key that you created using Crossmint Console. You will be using this key to create an NFT Collection and mint an NFT on Solana.
+- `CROSSMINT_COLLECTION_ID` - The Collection Id of the NFT Collection you deployed on Solana. You can obtain this from the Crossmint Console after you created a collection on Solana using the API.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Built using
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Next.js](https://nextjs.org/)
+- [Crossmint](http://crossmint.com/?utm_source=rohit&utm_medium=github&utm_campaign=solana-solarplex)
+- [SolarplexSDK](https://github.com/usedispatch/solarplex-frame-sdk)
