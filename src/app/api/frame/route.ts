@@ -25,27 +25,15 @@ export async function POST(req: NextRequest): Promise<Response> {
       input = message.input;
     }
 
-    if (!input) {
+    if (!linkedWallet) {
       return new NextResponse(
         getFrameHtmlResponse({
-          image: `${NEXT_PUBLIC_URL}/error2.png`,
+          image: `${NEXT_PUBLIC_URL}/error.png`,
         })
       );
     }
 
-    if (input.slice(-4) === ".sol") {
-      const { pubkey } = getDomainKeySync(input);
-      const connection = new Connection("https://api.mainnet-beta.solana.com");
-      const { registry } = await NameRegistryState.retrieve(connection, pubkey);
-
-      const pubKey = new PublicKey(registry.owner);
-      recipientAddress = pubKey.toBase58();
-    } else if (input.includes("@")) {
-      isEmail = true;
-      recipientAddress = `email:${input}:solana`;
-    } else {
-      recipientAddress = `solana:${linkedWallet}`;
-    }
+    recipientAddress = `solana:${linkedWallet}`;
 
     const crossmintURL = `https://${env}.crossmint.com/api/2022-06-09/collections/${process.env.CROSSMINT_COLLECTION_ID}/nfts`;
     const crossmintOptions = {
