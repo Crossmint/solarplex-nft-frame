@@ -28,3 +28,7 @@ Refer to the repository's src for the code that lets you create an NFT Minting S
 - [Next.js](https://nextjs.org/)
 - [Crossmint](http://crossmint.com/?utm_source=rohit&utm_medium=github&utm_campaign=solana-solarplex)
 - [SolarplexSDK](https://github.com/usedispatch/solarplex-frame-sdk)
+
+## Tutorial
+
+Check out the complete tutorial [here](https://blog.crossmint.com/how-to-create-a-solarplex-frame-to-mint-cnfts-on-solana/?utm_source=rohit&utm_medium=github&utm_campaign=solana-solarplex)
