@@ -11,10 +11,6 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: `${NEXT_PUBLIC_URL}/default.png`,
-
-  input: {
-    text: "Enter your wallet or .sol or email address", //text input field is not supported on Solarplex frames at the moment
-  },
   post_url: `${NEXT_PUBLIC_URL}/api/frame`,
 });
 
